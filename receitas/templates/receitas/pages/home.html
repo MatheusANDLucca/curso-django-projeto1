@@ -1,18 +1,10 @@
 {% include 'receitas/partials/head.html' %}
 
 <body>
-    <header class="main-header-container">
-        <div class="main-header container">
-            <h1>
-                <a href="/">
-                    <i class="fas fa-carrot"></i>
-                    <span>
-                        Receitas Lucca {{ name }}
-                    </span>
-                </a>
-            </h1>
-        </div>
-    </header>
+    {% include 'receitas/partials/header.html' %}
+
+    {% include 'receitas/partials/search.html' %}
+
 </body>
 
 </html>

@@ -1,5 +1,7 @@
+from django.http import Http404
 from django.shortcuts import render
 from utils.receitas.factory import make_recipe
+
 from .models import Recipe
 
 def home(request):
@@ -15,8 +17,14 @@ def category(request, category_id):
         category__id=category_id,
         is_published=True
         ).order_by('-id')
+    
+    if not recipes:
+        raise Http404('not found 😢')
+
+
     return render(request, 'receitas/pages/categoria.html', context={
         'recipes': recipes,
+        'title': f'{recipes.first().category.name} - Categoria | '
     })
 
 def receita(request, id):
